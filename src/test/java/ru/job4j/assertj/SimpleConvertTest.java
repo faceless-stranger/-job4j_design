@@ -37,8 +37,6 @@ class SimpleConvertTest {
         assertThat(set).hasSize(5)
                 .contains("five1")
                 .anySatisfy(s -> s.contains("d"));
-
-
     }
 
     @Test
