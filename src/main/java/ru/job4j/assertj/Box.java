@@ -7,8 +7,8 @@ public class Box {
     private String type = "";
 
     public Box(int vertex, int edge) {
-        this.vertex = vertex; // вершина
-        this.edge = edge; // край
+        this.vertex = vertex;
+        this.edge = edge;
         init();
     }
 
