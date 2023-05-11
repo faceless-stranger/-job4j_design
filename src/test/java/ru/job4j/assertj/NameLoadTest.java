@@ -1,6 +1,7 @@
 package ru.job4j.assertj;
 
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class NameLoadTest {
@@ -23,7 +24,7 @@ class NameLoadTest {
     @Test
     void nameNotContainSymbol() {
         NameLoad nameLoad = new NameLoad();
-        assertThatThrownBy(() -> nameLoad.parse("1=Vlad","2Egor"))
+        assertThatThrownBy(() -> nameLoad.parse("1=Vlad", "2Egor"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("does not contain the symbol");
     }
@@ -31,7 +32,7 @@ class NameLoadTest {
     @Test
     void nameNotContainsKey() {
         NameLoad nameLoad = new NameLoad();
-        assertThatThrownBy(() -> nameLoad.parse("1=Vlad","=2Egor"))
+        assertThatThrownBy(() -> nameLoad.parse("1=Vlad", "=2Egor"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("does not contain a key");
     }
@@ -39,7 +40,7 @@ class NameLoadTest {
     @Test
     void nameNotContainsValue() {
         NameLoad nameLoad = new NameLoad();
-        assertThatThrownBy(() -> nameLoad.parse("1Vlad=","2=Egor"))
+        assertThatThrownBy(() -> nameLoad.parse("1Vlad=", "2=Egor"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("does not contain a value");
     }

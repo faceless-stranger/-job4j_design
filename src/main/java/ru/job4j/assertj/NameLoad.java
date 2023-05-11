@@ -14,8 +14,8 @@ public class NameLoad {
                 .map(String::trim)                                               /** удаление пробелов */
                 .filter(this::validate)                                          /** фильтрация по методу validate */
                 .map(s -> s.split("=", 2))                            /** Разделение строк на подстроки по символу = c лимитом в 2 */
-                .collect(Collectors.toMap(                                       /** Слияния в map */
-                        e -> e[0],                                               /** ключ */
+                .collect(Collectors.toMap(
+                        e -> e[0],                                               /** Слияния в map  ключ */
                         e -> e[1],                                               /** значение */
                         (first, second) -> String.format("%s+%s", first, second) /** избавление от дубликатов */
                 )));
@@ -23,7 +23,7 @@ public class NameLoad {
 
     private boolean validate(String name) {
         if (!name.contains("=")) {                                               /** проверяет содержит ли имя пробел */
-            throw new IllegalArgumentException(                                  /** если не содержит бросает exeption */
+            throw new IllegalArgumentException(
                     String.format("this name: %s does not contain the symbol \"=\"", name));
         }
         if (name.startsWith("=")) {                                              /** Начинаеться ли имя на = */
