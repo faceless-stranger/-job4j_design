@@ -3,9 +3,6 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 class SimpleSetTest {
 
-
-
-
     @Test
     void when4AddAndAddFirstThenFalse() {
         SimpleSet set = new SimpleSet();
