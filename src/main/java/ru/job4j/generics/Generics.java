@@ -19,10 +19,16 @@ public class Generics {
         generics.printObject(third);
         System.out.println();
 
+        /**
+         * gen.printBoundedWildCard(first);
+         */
         generics.printBoundedWildCard(second);
         generics.printBoundedWildCard(third);
         System.out.println();
 
+        /**
+         * gen.printLowerBoundedWildCard(third);
+         */
         generics.printLowerBoundedWildCard(first);
         generics.printLowerBoundedWildCard(second);
     }
