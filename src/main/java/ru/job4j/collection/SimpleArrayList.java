@@ -19,7 +19,8 @@ public class SimpleArrayList<T> implements SimpleList<T> {
     }
 
     public T[] arrayExpansion() {
-        return container = Arrays.copyOf(container, container.length > 0 ? container.length * 2 : 1);
+        T[] value = Arrays.copyOf(container, container.length > 0 ? container.length * 2 : 1);
+        return value;
     }
 
     @Override
