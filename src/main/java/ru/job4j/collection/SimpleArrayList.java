@@ -13,12 +13,12 @@ public class SimpleArrayList<T> implements SimpleList<T> {
 
     @Override
     public void add(T value) {
-        container = (container.length == size) ? ArrayExpansion() : container;
+        container = (container.length == size) ? arrayExpansion() : container;
         container[size++] = value;
         modCount++;
     }
 
-    public T[] ArrayExpansion() {
+    public T[] arrayExpansion() {
         return container = Arrays.copyOf(container, container.length > 0 ? container.length * 2 : 1);
     }
 
