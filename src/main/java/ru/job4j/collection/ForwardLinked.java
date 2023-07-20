@@ -5,18 +5,17 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
-public class SimpleLinkedList<E> implements LinkedList<E> {
+public class ForwardLinked<T> implements Iterable<T> {
     private int size = 0;
     private int modCount = 0;
-    private Node<E> head;
+    private Node<T> head;
 
-    @Override
-    public void add(E value) {
-        Node<E> newNode = new Node<>(value, null);
+    public void add(T value) {
+        ForwardLinked.Node<T> newNode = new ForwardLinked.Node<>(value, null);
         if (head == null) {
             head = newNode;
         } else {
-            Node<E> item = head;
+            ForwardLinked.Node<T> item = head;
             while (item.next != null) {
                 item = item.next;
             }
@@ -26,35 +25,35 @@ public class SimpleLinkedList<E> implements LinkedList<E> {
         modCount++;
     }
 
-    @Override
-    public E get(int index) {
+    public T get(int index) {
         Objects.checkIndex(index, size);
-        Node<E> value = head;
+        ForwardLinked.Node<T> value = head;
         for (int i = 0; i < index; i++) {
             value = value.next;
         }
         return value.item;
     }
 
-    public E deleteFirst(int index) {
-        E value = get(index);
-        if (head != null) {
+    public T deleteFirst() {
+        T value = null;
+        if (head == null) {
             throw new NoSuchElementException("Список пуст");
         }
-        head.item = null;
-        head.next = null;
-        head = head.next;
+        if (head.next == null) {
+            head = null;
+        } else {
+            value = head.item;
+            head = head.next;
+        }
         size--;
         modCount++;
         return value;
     }
 
-
-    @Override
-    public Iterator<E> iterator() {
-        return new Iterator<E>() {
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
             int expectedModCount = modCount;
-            Node<E> iteratorIndex = head;
+            ForwardLinked.Node<T> iteratorIndex = head;
 
             @Override
             public boolean hasNext() {
@@ -65,22 +64,22 @@ public class SimpleLinkedList<E> implements LinkedList<E> {
             }
 
             @Override
-            public E next() {
+            public T next() {
                 if (expectedModCount != modCount) {
                     throw new ConcurrentModificationException("hasNext колекция была изменена");
                 }
-                E value = iteratorIndex.item;
+                T value = (T) iteratorIndex.item;
                 iteratorIndex = iteratorIndex.next;
                 return value;
             }
         };
     }
 
-    private static class Node<E> {
-        private E item;
-        private Node<E> next;
+    private static class Node<T> {
+        private T item;
+        private ForwardLinked.Node<T> next;
 
-        Node(E element, Node<E> next) {
+        Node(T element, ForwardLinked.Node<T> next) {
             this.item = element;
             this.next = next;
         }
