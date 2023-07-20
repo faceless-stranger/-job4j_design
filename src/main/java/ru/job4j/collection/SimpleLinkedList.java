@@ -49,7 +49,6 @@ public class SimpleLinkedList<E> implements LinkedList<E> {
         return value;
     }
 
-
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
