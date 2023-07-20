@@ -11,7 +11,7 @@ public class SimpleLinkedList<E> implements LinkedList<E> {
 
     @Override
     public void add(E value) {
-        Node newNode = new Node<>(value, null);
+        Node<E> newNode = new Node<>(value, null);
         if (head == null) { 
             head = newNode;
         } else {
@@ -28,18 +28,18 @@ public class SimpleLinkedList<E> implements LinkedList<E> {
     @Override
     public E get(int index) {
         Objects.checkIndex(index, size);
-        Node value = head;
+        Node<E> value = head;
         for (int i = 0; i < index; i++) {
             value = value.next;
         }
-        return (E) value.item;
+        return value.item;
     }
 
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
             int expectedModCount = modCount;
-            Node iteratorIndex = head;
+            Node<E> iteratorIndex = head;
 
             @Override
             public boolean hasNext() {
@@ -56,7 +56,7 @@ public class SimpleLinkedList<E> implements LinkedList<E> {
                 }
                 E value = (E) iteratorIndex.item;
                 iteratorIndex = iteratorIndex.next;
-                return (E) value;
+                return value;
             }
         };
     }
