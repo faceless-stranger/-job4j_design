@@ -1,5 +1,7 @@
 package ru.job4j.collection;
 
+import java.util.NoSuchElementException;
+
 /**
  * Класс реализует работу двух стеков.
  */
@@ -12,6 +14,9 @@ public class SimpleQueue<T> {
      * должен возвращать первое значение и удалять его из коллекции
      */
     public T poll() {
+        if (index == 0){
+            throw new NoSuchElementException("Queue is empty");
+        }
         index--;
         return in.pop();
     }
