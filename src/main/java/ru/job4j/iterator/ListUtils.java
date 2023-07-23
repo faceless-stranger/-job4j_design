@@ -8,8 +8,12 @@ public class ListUtils {
     public static <T> void addBefore(List<T> list, int index, T value) {
         Objects.checkIndex(index, list.size());
         ListIterator<T> iterator = list.listIterator();
-        if (iterator.next() != null && iterator.nextIndex() == index) {
-          iterator.add(value);
+        while (iterator.hasNext()) {
+            if (iterator.nextIndex() == index) {
+                iterator.add(value);
+                break;
+            }
+            iterator.next();
         }
     }
 
@@ -18,7 +22,14 @@ public class ListUtils {
      */
     public static <T> void addAfter(List<T> list, int index, T value) {
         Objects.checkIndex(index, list.size());
-        list.add(index + 1, value);
+        ListIterator<T> iterator = list.listIterator();
+        while (iterator.hasNext()) {
+            if (iterator.nextIndex() == index + 1) {
+                iterator.add(value);
+                break;
+            }
+            iterator.next();
+        }
     }
 
     /**
@@ -49,13 +60,7 @@ public class ListUtils {
      * Метод удаляет из списка те элементы, которые есть в elements
      */
     public static <T> void removeAll(List<T> list, List<T> elements) {
-        ListIterator<T> iterator = list.listIterator();
-        while (iterator.hasNext()) {
-            T value = iterator.next();
-            if (elements.contains(value)) {
-                iterator.remove();
-            }
-        }
+        removeIf(list, elements::contains);
     }
 
 }
