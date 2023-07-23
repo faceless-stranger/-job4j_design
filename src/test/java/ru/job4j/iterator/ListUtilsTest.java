@@ -66,6 +66,4 @@ class ListUtilsTest {
         ListUtils.removeAll(input, element);
         assertThat(input).hasSize(2).containsSequence(1, 7);
     }
-
-
 }
