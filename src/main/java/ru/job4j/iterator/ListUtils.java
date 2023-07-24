@@ -5,6 +5,9 @@ import java.util.function.Predicate;
 
 public class ListUtils {
 
+    /**
+     * Метод должен вставляет до индекса
+     */
     public static <T> void addBefore(List<T> list, int index, T value) {
         Objects.checkIndex(index, list.size());
         ListIterator<T> iterator = list.listIterator();
@@ -22,14 +25,7 @@ public class ListUtils {
      */
     public static <T> void addAfter(List<T> list, int index, T value) {
         Objects.checkIndex(index, list.size());
-        ListIterator<T> iterator = list.listIterator();
-        while (iterator.hasNext()) {
-            if (iterator.nextIndex() == index + 1) {
-                iterator.add(value);
-                break;
-            }
-            iterator.next();
-        }
+        list.add(index + 1, value);
     }
 
     /**

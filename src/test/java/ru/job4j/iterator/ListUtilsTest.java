@@ -25,6 +25,20 @@ class ListUtilsTest {
     }
 
     @Test
+    void whenAddBefore3El() {
+        List<Integer> input = new ArrayList<>(Arrays.asList(1, 2, 4));
+        ListUtils.addBefore(input, 2, 3);
+        assertThat(input).hasSize(4).containsSequence(1, 2, 3, 4);
+    }
+
+    @Test
+    void whenAddBeforeStartEl() {
+        List<Integer> input = new ArrayList<>(Arrays.asList(2));
+        ListUtils.addBefore(input, 0, 1);
+        assertThat(input).hasSize(2).containsSequence(1, 2);
+    }
+
+    @Test
     void whenAddBeforeInvalidIndex() {
         assertThatThrownBy(() -> ListUtils.addBefore(input, 6, 4))
                 .isInstanceOf(IndexOutOfBoundsException.class);
