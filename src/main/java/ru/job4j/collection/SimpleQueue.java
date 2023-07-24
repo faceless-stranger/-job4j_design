@@ -8,35 +8,33 @@ import java.util.NoSuchElementException;
 public class SimpleQueue<T> {
     private final SimpleStack<T> in = new SimpleStack<>();
     private final SimpleStack<T> out = new SimpleStack<>();
-    private int index = 0;
+    private int indexIn = 0;
+    private int indexOut = 0;
 
     /**
      * должен возвращать первое значение и удалять его из коллекции
      */
     public T poll() {
-        if (index == 0) {
+        if (indexOut == 0 && indexIn == 0) {
             throw new NoSuchElementException("Queue is empty");
         }
-        index--;
-        return in.pop();
+        if (indexOut == 0) {
+            while (indexIn != 0) {
+                out.push(in.pop());
+                indexIn--;
+                indexOut++;
+            }
+        }
+        indexOut--;
+        return out.pop();
     }
 
     /**
      * помещает значение в конец.
      */
     public void push(T value) {
-        if (index == 0) {
-            in.push(value);
-        } else if (index >= 1) {
-            for (int i = 0; i < index; i++) {
-                out.push(in.pop());
-            }
-            in.push(value);
-            for (int i = 0; i < index; i++) {
-                in.push(out.pop());
-            }
-        }
-        index++;
+        in.push(value);
+        indexIn++;
     }
 }
 
