@@ -10,22 +10,18 @@ public class ListUtils {
      */
     public static <T> void addBefore(List<T> list, int index, T value) {
         Objects.checkIndex(index, list.size());
-        ListIterator<T> iterator = list.listIterator();
-        while (iterator.hasNext()) {
-            if (iterator.nextIndex() == index) {
-                iterator.add(value);
-                break;
-            }
-            iterator.next();
-        }
+        ListIterator<T> iterator = list.listIterator(index);
+        iterator.add(value);
     }
+
 
     /**
      * Метод должен вставляет после индекса
      */
     public static <T> void addAfter(List<T> list, int index, T value) {
         Objects.checkIndex(index, list.size());
-        list.add(index + 1, value);
+        ListIterator<T> iterator = list.listIterator(index + 1);
+        iterator.add(value);
     }
 
     /**
@@ -35,7 +31,7 @@ public class ListUtils {
         ListIterator<T> iterator = list.listIterator();
         while (iterator.hasNext()) {
             if (filter.test(iterator.next())) {
-               iterator.remove();
+                iterator.remove();
             }
         }
     }
