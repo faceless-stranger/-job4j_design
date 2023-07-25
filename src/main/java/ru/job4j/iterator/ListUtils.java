@@ -14,7 +14,6 @@ public class ListUtils {
         iterator.add(value);
     }
 
-
     /**
      * Метод должен вставляет после индекса
      */
