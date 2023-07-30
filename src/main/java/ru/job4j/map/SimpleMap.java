@@ -70,10 +70,10 @@ public class SimpleMap<K, V> implements Map<K, V> {
                 ? value.value
                 : null;
     }
-
     /**
      * используется для сравнения ключей, он проверяет равны ли хэши ключей и равны ли сами ключи.
      */
+
     private boolean checkNullObject(K value, K key) {
         return Objects.hashCode(value) == Objects.hashCode(key)
                 && Objects.equals(value, key);
