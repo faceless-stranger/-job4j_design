@@ -27,17 +27,18 @@ public class SimpleMap<K, V> implements Map<K, V> {
 
     @Override
     public boolean put(K key, V value) {
+        boolean rsl = false;
         if (count >= capacity * LOAD_FACTOR) {
             expand();
         }
         int index = getIndex(key);
-        if (table[index] != null) {
-            return false;
+        if (table[index] == null) {
+            rsl = true;
+            table[index] = new MapEntry<>(key, value);
+            count++;
+            modCount++;
         }
-        table[index] = new MapEntry<>(key, value);
-        count++;
-        modCount++;
-        return true;
+        return rsl;
     }
 
     private int hash(int hashCode) {
