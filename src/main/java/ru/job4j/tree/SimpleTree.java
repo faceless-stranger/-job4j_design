@@ -13,10 +13,13 @@ public class SimpleTree<E> implements Tree<E> {
     public boolean add(E parent, E child) {
         boolean rsl = false;
         Optional<Node<E>> nodeParent = findBy(parent);
-        if (nodeParent.isPresent()) {
+        Optional<Node<E>> nodeChild = findBy(child);
+        if (nodeParent.isPresent()
+                && nodeParent.get() == parent
+                && nodeChild.isEmpty()) {
             nodeParent.get().children.add(new Node<>(child));
+            rsl = true;
         }
-        findBy(parent);
         return rsl;
     }
 
@@ -34,7 +37,7 @@ public class SimpleTree<E> implements Tree<E> {
             Node<E> el = data.poll();
             /** Проверяет равенл ли элемент нашему значению */
             if (el.value.equals(value)) {
-         /** присваеиваем рсл хначение el и если оно null бросает exeption */
+         /** присваеиваем рсл значение el и если оно null бросает exeption */
                 rsl = Optional.of(el);
                 break;
             }
