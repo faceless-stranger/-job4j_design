@@ -1,7 +1,9 @@
 package ru.job4j.question;
 
 import org.junit.jupiter.api.Test;
+
 import java.util.Set;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class AnalizeTest {

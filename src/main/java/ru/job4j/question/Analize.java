@@ -18,8 +18,7 @@ public class Analize {
             for (User cur : current) {
                 if (!check.containsKey(cur.getId())) {
                     added++;
-                }
-                if (check.containsKey(cur.getId()) && !check.containsValue(cur)) {
+                } else if (!check.containsValue(cur)) {
                     changed++;
                 }
                 check.remove(cur.getId());
