@@ -19,6 +19,8 @@ public class ResultFile {
             out.write(System.lineSeparator().getBytes());
             out.write("1*7=7".getBytes());
             out.write(System.lineSeparator().getBytes());
+            out.write("1*8=7".getBytes());
+            out.write(System.lineSeparator().getBytes());
         } catch (Exception e) {
             e.printStackTrace();
         }
