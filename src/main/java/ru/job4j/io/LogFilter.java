@@ -23,7 +23,7 @@ public class LogFilter {
                     res.add(e);
                 }
             });
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return res;
@@ -33,7 +33,7 @@ public class LogFilter {
         var data = filter();
         try (PrintWriter res = new PrintWriter(new BufferedWriter(new FileWriter(out)))) {
             data.forEach(e -> res.println(e));
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
