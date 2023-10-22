@@ -24,6 +24,9 @@ public class Config {
 
         try (BufferedReader read = new BufferedReader(new FileReader(this.path))) {
             read.lines().forEach(line -> {
+                if (line.startsWith("/") || line.isEmpty()) {
+                    return;
+                }
                 if (line.startsWith("=") || line.endsWith("=") || !line.contains("=") || line.equals("=")) {
                     throw new IllegalArgumentException("Синтаксис нарушен");
                 }
