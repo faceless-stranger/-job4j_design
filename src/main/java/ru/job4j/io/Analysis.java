@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class Analysis {
     public void unavailable(String source, String target) {
         try (BufferedReader in = new BufferedReader(new FileReader(source))) {
-            PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(target)),true);
+            PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(target)), true);
             String start = null;
             String end;
             String line;
