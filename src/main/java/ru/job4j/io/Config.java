@@ -27,8 +27,9 @@ public class Config {
                 if (line.startsWith("/") || line.isEmpty()) {
                     return;
                 }
-                if (line.startsWith("=") || line.endsWith("=") || !line.contains("=") || line.equals("=")) {
-                    throw new IllegalArgumentException("Синтаксис нарушен");
+                if (line.startsWith("=") || !line.contains("=") || line.equals("=")
+                        || (line.endsWith("=") && line.split("=").length < 2)) {
+                    throw new IllegalArgumentException("Синтаксис нарушен " + line);
                 }
 
                 if (line.contains("=")) {

@@ -2,6 +2,7 @@ package ru.job4j.io;
 
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ConfigTest {
@@ -26,7 +27,8 @@ class ConfigTest {
     void whenInvalidFormatKeyAndValue() {
         String path = "./data/pair_without_comment_Invalid_Key_Value.properties";
         Config config = new Config(path);
-        assertThrows(IllegalArgumentException.class, () -> config.load());
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> config.load());
+        assertEquals("Синтаксис нарушен name=", exception.getMessage());
     }
 
     @Test
@@ -34,6 +36,6 @@ class ConfigTest {
         String path = "./data/pair_without_comment_double_equals.properties";
         Config config = new Config(path);
         config.load();
-        assertThat(config.value("name")).isEqualTo("=Vlad");
+        assertThat(config.value("name")).isEqualTo("Vlad=");
     }
 }
