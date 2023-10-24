@@ -7,8 +7,8 @@ import java.util.HashMap;
 
 public class Analysis {
     public void unavailable(String source, String target) {
-        try (BufferedReader in = new BufferedReader(new FileReader(source))) {
-            PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(target)), true);
+        try (BufferedReader in = new BufferedReader(new FileReader(source));
+             PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(target)))) {
             String start = null;
             String end;
             String line;
@@ -17,7 +17,7 @@ public class Analysis {
                     start = line.split(" ")[1];
                 } else if ((line.startsWith("200") || line.startsWith("300")) && start != null) {
                     end = line.split(" ")[1];
-                    out.println("Время отключения " + start + " время включения " + end);
+                    out.println(start + ";" + end + ";");
                     start = null;
                 }
             }
