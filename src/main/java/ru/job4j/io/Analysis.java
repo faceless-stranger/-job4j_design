@@ -19,7 +19,6 @@ public class Analysis {
                     start = line.split(" ")[1];
                 } else if ((line.startsWith("200") || line.startsWith("300")) && start != null) {
                     end = line.split(" ")[1];
-                    // sj.add(start).add(end);
                     out.println(sj.add(start).add(end).add("").toString());
                     sj = new StringJoiner(";");
                     start = null;
