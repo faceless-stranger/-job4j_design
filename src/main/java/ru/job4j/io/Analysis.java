@@ -4,11 +4,13 @@ import ru.job4j.map.Map;
 
 import java.io.*;
 import java.util.HashMap;
+import java.util.StringJoiner;
 
 public class Analysis {
     public void unavailable(String source, String target) {
         try (BufferedReader in = new BufferedReader(new FileReader(source));
              PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(target)))) {
+            StringJoiner sj = new StringJoiner(";");
             String start = null;
             String end;
             String line;
@@ -17,7 +19,9 @@ public class Analysis {
                     start = line.split(" ")[1];
                 } else if ((line.startsWith("200") || line.startsWith("300")) && start != null) {
                     end = line.split(" ")[1];
-                    out.println(start + ";" + end + ";");
+                    // sj.add(start).add(end);
+                    out.println(sj.add(start).add(end).add("").toString());
+                    sj = new StringJoiner(";");
                     start = null;
                 }
             }
