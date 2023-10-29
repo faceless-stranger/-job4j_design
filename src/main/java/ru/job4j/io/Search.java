@@ -1,5 +1,6 @@
 package ru.job4j.io;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
@@ -19,3 +20,7 @@ public class Search {
         return searcher.getPaths();
     }
 }
+
+
+
+
