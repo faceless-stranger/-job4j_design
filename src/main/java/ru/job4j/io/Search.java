@@ -28,7 +28,6 @@ public class Search {
         if (!args[1].contains(".txt")) {
             throw new IllegalArgumentException(String.format("Incorrect file extension"));
         }
-
     }
 }
 
