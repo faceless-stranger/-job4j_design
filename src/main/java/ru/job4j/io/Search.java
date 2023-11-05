@@ -25,7 +25,7 @@ public class Search {
         if (!Files.isDirectory(Path.of(args[0]))) {
             throw new IllegalArgumentException(String.format("Not directory"));
         }
-        if (!args[1].contains(".txt")) {
+        if (!args[1].startsWith(".") && args[1].length() < 2) {
             throw new IllegalArgumentException(String.format("Incorrect file extension"));
         }
     }
