@@ -51,10 +51,10 @@ public class ArgsName {
             String key = st[0].substring(1);
             String value = st[1];
             if (key.isEmpty()) {
-                throw new IllegalArgumentException(String.format("Error: This argument '%s' does not contain a key", args[1]));
+                throw new IllegalArgumentException(String.format("Error: This argument '%s' does not contain a key", arg));
             }
             if (value.isEmpty()) {
-                throw new IllegalArgumentException(String.format("Error: This argument '%s' does not contain a value", args[1]));
+                throw new IllegalArgumentException(String.format("Error: This argument '%s' does not contain a value", arg));
             }
         }
     }
