@@ -41,14 +41,14 @@ public class ConsoleChat {
                     System.out.println("Предсказание продолжаются");
                     break;
                 default:
-                    if (check.equals(CONTINUE) && !question.equals(OUT)) {
+                    if (CONTINUE.equals(check) && !OUT.equals(question)) {
                         String answer = answersDatabase.get(new Random().nextInt(answersDatabase.size()));
                         log.add(question + "-" + answer);
                         System.out.println(answer);
                     }
                     break;
             }
-        } while (!OUT.equals(question));
+        } while (!question.equals(OUT));
         saveLog(log);
     }
 
