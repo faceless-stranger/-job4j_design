@@ -8,7 +8,8 @@ import java.util.*;
 public class CSVReader {
     public static void handle(ArgsName argsName) throws Exception {
         List<Integer> columnList = new ArrayList<>();
-        List<String[]> fileQuality = csvReader(argsName.get("path"), argsName.get("delimiter"));
+        String delimiter = argsName.get("delimiter");
+        List<String[]> fileQuality = csvReader(argsName.get("path"), delimiter);
         String[] columnsCSV = fileQuality.get(0);
         String[] dateFilter = argsName.get("filter").split(",");
         /* Нахожу столбцы в масиве по нужным параметрам */
@@ -25,7 +26,7 @@ public class CSVReader {
         for (String[] row : fileQuality) {
             StringBuilder stringBuilder = new StringBuilder();
             for (int i : columnList) {
-                stringBuilder.append(row[i]).append(argsName.get("delimiter"));
+                stringBuilder.append(row[i]).append(delimiter);
             }
             result.add(stringBuilder.deleteCharAt(stringBuilder.length() - 1).toString());
         }
@@ -33,10 +34,9 @@ public class CSVReader {
     }
 
     private static void csvWriter(List<String> result, String out) {
-        try (BufferedWriter buf = new BufferedWriter(new FileWriter(out))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(out))) {
             for (String writeString : result) {
-            buf.write(writeString);
-            buf.newLine();
+                writer.println(writeString);
             }
         } catch (IOException e) {
             e.printStackTrace();
