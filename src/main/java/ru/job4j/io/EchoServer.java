@@ -22,7 +22,7 @@ public class EchoServer {
                     if (value.equals("Hello")) {
                         out.write("Hello".getBytes());
                     }
-                    if (!value.isEmpty() && !value.equals("Hello")){
+                    if (!value.isEmpty() && !value.equals("Hello")) {
                         out.write(value.getBytes());
                     }
                     for (String str = in.readLine(); str != null && !str.isEmpty(); str = in.readLine()) {
