@@ -40,7 +40,7 @@ public class Contact implements Serializable {
             oos.writeObject(contact);
         }
 
-        /* Чтение объекта из файла */
+        /* Чтение объекта из файла  */
         try (FileInputStream fis = new FileInputStream(tempFile);
              ObjectInputStream ois =
                      new ObjectInputStream(fis)) {
