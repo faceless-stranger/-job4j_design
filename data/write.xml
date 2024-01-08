@@ -1,0 +1,9 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+<сar automatic="False" power="250" name="Skoda Octavia">
+<person date="Ivan Ivanov Ivanovich"/>
+<operationses>
+    <operation>Change of oil</operation>
+    <operation>suspension check</operation>
+    <operation>wheel replacement</operation>
+</operationses>
+</сar>
