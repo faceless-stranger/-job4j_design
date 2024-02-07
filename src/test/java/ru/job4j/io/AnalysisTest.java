@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+import ru.job4j.assertj.io.Analysis;
 
 import java.io.*;
 import java.nio.file.Path;

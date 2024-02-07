@@ -1,6 +1,8 @@
 package ru.job4j.io;
 
 import org.junit.jupiter.api.Test;
+import ru.job4j.assertj.io.Config;
+
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
