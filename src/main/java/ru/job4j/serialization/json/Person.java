@@ -38,7 +38,7 @@ public class Person {
         return "Person{"
                 + "sex=" + sex
                 + ", age=" + age
-                + ", contact=" + contact
+                + ", contact =" + contact
                 + ", statuses=" + Arrays.toString(statuses)
                 + '}';
     }
