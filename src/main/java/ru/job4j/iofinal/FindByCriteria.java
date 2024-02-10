@@ -32,9 +32,10 @@ public class FindByCriteria {
             result = Search.search(root, p -> pattern.matcher(p.toFile().getName()).find());
         } else if ("mask".equals(argsName.get("t"))) {
             String value = argsName.get("n");
-            String replaced = value.replace(".", "\\.").replace("?", "?.").replace("*", ".*");
-            System.out.println(replaced);
-            Pattern pattern = Pattern.compile(replaced);
+            String escapedValue = value.replace(".", "\\.");
+            String replacedValue = escapedValue.replace('*', '.').replace('?', '.');
+            System.out.println(replacedValue);
+            Pattern pattern = Pattern.compile(replacedValue);
             result = Search.search(root, p -> pattern.matcher(p.toFile().getName()).find());
         }
         return result;
