@@ -31,21 +31,10 @@ public class FindByCriteria {
             Pattern pattern = Pattern.compile(argsName.get("n"));
             result = Search.search(root, p -> pattern.matcher(p.toFile().getName()).find());
         } else if ("mask".equals(argsName.get("t"))) {
-            StringBuilder sb = new StringBuilder();
-            char[] value = argsName.get("n").toCharArray();
-            for (char rsl : value) {
-                char chr = rsl;
-                if (rsl == '*') {
-                    sb.append("." + rsl);
-                } else if ('?' == rsl) {
-                    sb.append(rsl + ".");
-                } else if ('.' == rsl) {
-                    sb.append("\\.");
-                } else {
-                    sb.append(rsl);
-                }
-            }
-            Pattern pattern = Pattern.compile(sb.toString());
+            String value = argsName.get("n");
+            String replaced = value.replace(".", "\\.").replace("?", "?.").replace("*", ".*");
+            System.out.println(replaced);
+            Pattern pattern = Pattern.compile(replaced);
             result = Search.search(root, p -> pattern.matcher(p.toFile().getName()).find());
         }
         return result;

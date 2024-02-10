@@ -19,7 +19,7 @@
 
 7. В программе должна быть валидация ключей и подсказка.
 
--d=С:  -n=*.?xt -t=mask -o=log.txt
+-d=С:  -n= -t=mask -o=log.txt
 -d=C:\ -n=redmean -t=name -o=logres.txt
 
 
