@@ -1,0 +1,78 @@
+many-to-one
+
+CREATE TABLE сoffeeLike(
+id SERIAL PRIMARY KEY,
+visitors CHAR(40) NOT NULL,
+phone INT NOT NULL,
+bonus_coin INT
+);
+
+CREATE TABLE visitors(
+id SERIAL PRIMARY KEY,
+name CHAR(40) NOT NULL,
+coffeeLike_id INT REFERENCES сoffeelike(id)
+);
+
+INSERT INTO coffeLike(
+	id, visitors, phone, bonus_coin)
+	VALUES (1, 'Edi', 898888, 15);
+
+INSERT INTO public.visitors(
+	id, name, coffeelike_id)
+	VALUES (1, 'Evard', 2);
+
+many-to-many
+
+CREATE TABLE guests (
+id SERIAL PRIMARY KEY,
+name CHAR(40) NOT NULL
+);
+
+CREATE TABLE restaurant (
+id SERIAL PRIMARY KEY,
+name CHAR(40) NOT NULL
+);
+
+CREATE TABLE foodcort (
+id SERIAL PRIMARY KEY,
+guests_id int REFERENCES guests(id),
+restaurant_id int REFERENCES restaurant(id)
+);
+
+INSERT INTO guests(name) VALUES ('Ira');
+INSERT INTO guests(name) VALUES ('Nikita');
+INSERT INTO guests(name) VALUES ('Vanya');
+
+INSERT INTO restaurant(name) VALUES ('Subway');
+INSERT INTO restaurant(name) VALUES ('KFC');
+INSERT INTO restaurant(name) VALUES ('BK');
+
+INSERT INTO foodcort(guests_id, restaurant_id) VALUES (1,1);
+INSERT INTO foodcort(guests_id, restaurant_id) VALUES (1,2);
+INSERT INTO foodcort(guests_id, restaurant_id) VALUES (2,3);
+INSERT INTO foodcort(guests_id, restaurant_id) VALUES (2,2);
+INSERT INTO foodcort(guests_id, restaurant_id) VALUES (3,3);
+
+one-to-one
+
+CREATE TABLE card (
+id serial PRIMARY KEY,
+date_card INT NOT NULL
+);
+
+
+CREATE TABLE worker(
+id serial PRIMARY KEY,
+name CHAR(40) NOT NULL,
+id_card INT REFERENCES card(id) unique
+);
+
+INSERT INTO card(id, date_card)
+VALUES(1,854356);
+INSERT INTO card(id, date_card)
+VALUES(2,6843205);
+
+INSERT INTO worker(id, name, id_card)
+VALUES(1, 'Vlad', 1);
+INSERT INTO worker(id, name, id_card)
+VALUES(2, 'Ivan', 2);
