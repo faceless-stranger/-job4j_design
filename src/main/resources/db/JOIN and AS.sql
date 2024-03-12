@@ -42,4 +42,5 @@ SELECT * FROM book;
 
 SELECT name_book AS Название, a.name_author AS Автор
 FROM book AS b
-JOIN author AS a ON b.id_athor = a.id_athor;
+JOIN author AS a ON b.id_athor = a.id_athor 
+;
