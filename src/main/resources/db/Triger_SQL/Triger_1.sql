@@ -16,7 +16,6 @@ VALUES
     ('Surface Pro 8', 'Microsoft', 8, 150000),
     ('PlayStation 5', 'Sony', 3, 50000);
 
--------------------------------------------------------------------
 
 CREATE OR REPLACE FUNCTION function_nalog()
 RETURNS TRIGGER AS $$
@@ -38,7 +37,6 @@ create trigger nalog_triger
     for each statement
     execute procedure function_nalog();	
 
------------------------------------------------------------------
 
 CREATE OR REPLACE FUNCTION function_nalog_do()
 RETURNS TRIGGER AS $$
@@ -56,7 +54,6 @@ create trigger nalog_triger_do
     for each row
     execute procedure function_nalog_do();
 
------------------------------------------------------------------
 
 CREATE OR REPLACE FUNCTION history_function()
 RETURNS TRIGGER AS $$
