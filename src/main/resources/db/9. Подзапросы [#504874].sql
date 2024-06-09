@@ -20,7 +20,7 @@ INSERT INTO customers (first_name, last_name, age, country) VALUES
 ('Ольга', 'Федорова', 33, 'Азербайджан');
 
 INSERT INTO customers (first_name, last_name, age, country) VALUES
-('Женя', 'Муссалов', 22, 'Россия');
+('Женя', 'Мусалов', 22, 'Россия');
 
 SELECT *
 FROM customers
