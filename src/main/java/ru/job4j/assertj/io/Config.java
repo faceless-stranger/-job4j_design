@@ -23,7 +23,7 @@ public class Config {
 
         try (BufferedReader read = new BufferedReader(new FileReader(this.path))) {
             read.lines().forEach(line -> {
-                if (line.startsWith("/") || line.isEmpty()) {
+                if (line.startsWith("/") || line.isEmpty() || line.startsWith("#")) {
                     return;
                 }
                 if (line.startsWith("=") || !line.contains("=") || line.equals("=")
