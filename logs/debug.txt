@@ -1,0 +1,1 @@
+2023-11-28 18:58:30,076 DEBUG ru.job4j.io.UsageLog4j:main:20 - byteVar: 123, shortVar: 12345, intVar: 1234567, longVar: 123456789, floatVar: 123.45, doubleVar: 123.4567, charVar: A, booleanVar: true
