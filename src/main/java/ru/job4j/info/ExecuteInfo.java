@@ -9,7 +9,7 @@ public class ExecuteInfo {
         boolean isResultSet = statement.execute(sql);
 
         if (isResultSet) {
-            // Запрос возвращает ResultSet (например, если это был SELECT запрос)
+              Запрос возвращает ResultSet (например, если это был SELECT запрос)
             ResultSet resultSet = statement.getResultSet();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
@@ -17,7 +17,7 @@ public class ExecuteInfo {
                 System.out.println("ID: " + id + ", Name: " + name);
             }
         } else {
-            // Запрос не возвращает ResultSet (например, это был UPDATE, INSERT или DELETE)
+             Запрос не возвращает ResultSet (например, это был UPDATE, INSERT или DELETE)
             int updateCount = statement.getUpdateCount();
             if (updateCount > 0) {
                 System.out.println("Rows affected: " + updateCount);
