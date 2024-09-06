@@ -13,8 +13,4 @@ public class Comment {
 
     /*getter/setter*/
 
-    @Override
-    protected void finalize() throws Throwable {
-        super.finalize();
-    }
 }
